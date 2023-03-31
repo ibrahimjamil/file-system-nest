@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
+import { DatabaseModule } from 'libs/database/src';
 import { EnvHelper, validateAdmin } from 'libs/env/src';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import appConfig from './config/app.config';
-import jwtConfig from './config/jwt.config';
+import appConfig from '../libs/common/src/configs/app.config';
+import jwtConfig from '../libs/common/src/configs/jwt.config';
 import { FileModule } from './file/file.module';
-
 
 EnvHelper.verifyNodeEnv();
 @Module({
@@ -17,7 +17,8 @@ EnvHelper.verifyNodeEnv();
       load: [appConfig, jwtConfig],
       validate: validateAdmin,
     }),
-    FileModule
+    FileModule,
+    DatabaseModule
   ],
   controllers: [AppController],
   providers: [AppService],

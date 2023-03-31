@@ -14,10 +14,6 @@ export class AppBootstrapManager {
   }
 
   static setAppDefaults(app: INestApplication): INestApplication {
-    useContainer(app.select(AppModule), {
-      fallbackOnErrors: true,
-      fallback: true,
-    });
     app
       .use(json({ limit: '50mb' }))
       .use(cookieParser())

@@ -74,3 +74,14 @@ export function validateAdmin(config: Record<string, unknown>) {
 
   return validatedConfig;
 }
+
+export function validateDatabaseConfig(config: Record<string, unknown>) {
+  const validatedConfig = plainToInstance(EnvironmentVariables, config, { enableImplicitConversion: true });
+  const errors = validateSync(validatedConfig, { skipMissingProperties: false, groups: ['database'] });
+
+  if (errors.length > 0) {
+    throw new InternalServerErrorException(errors.toString());
+  }
+
+  return validatedConfig;
+}
