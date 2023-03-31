@@ -17,8 +17,8 @@ EnvHelper.verifyNodeEnv();
       load: [appConfig, jwtConfig],
       validate: validateAdmin,
     }),
-    FileModule,
-    DatabaseModule
+    DatabaseModule,
+    FileModule
   ],
   controllers: [AppController],
   providers: [AppService],
