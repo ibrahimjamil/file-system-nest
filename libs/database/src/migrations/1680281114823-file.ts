@@ -20,13 +20,7 @@ export class file1680281114823 implements MigrationInterface {
                   type: 'varchar',
                   length: '36',
                   isNullable: false,
-                },
-                {
-                  name: 'email',
-                  type: 'varchar',
-                  length: '36',
-                  isNullable: false,
-                },
+                }
             ]
         }))
     }

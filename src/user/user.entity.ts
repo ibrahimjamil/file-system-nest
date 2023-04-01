@@ -8,7 +8,7 @@ export class User {
 
   @ApiProperty({ description: 'Name', maximum: 128, required: false })
   @Column({ type: 'varchar', nullable: true, length: 128 })
-  name: string;
+  email: string;
 
   @ApiProperty({ description: 'Password', maximum: 255, required: true })
   @Column({ type: 'varchar', nullable: false, length: 255 })

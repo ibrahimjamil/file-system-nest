@@ -6,6 +6,7 @@ import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from 'libs/common/src/filters/all-exceptions.filter';
 import { Reflector } from '@nestjs/core';
+import { AuthenticatedGuard } from './auth/guards/authenticated.guard';
 
 export class AppBootstrapManager {
   static async getTestingModule(): Promise<TestingModule> {
@@ -20,6 +21,7 @@ export class AppBootstrapManager {
       .use(json({ limit: '50mb' }))
       .use(cookieParser())
       .setGlobalPrefix('api/v1')
+      .useGlobalGuards(new AuthenticatedGuard(reflector))
       .useGlobalFilters(new AllExceptionsFilter())
       .useGlobalPipes(
         new ValidationPipe({

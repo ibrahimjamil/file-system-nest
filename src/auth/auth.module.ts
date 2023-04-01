@@ -7,6 +7,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './strategies/local.strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthenticatedGuard } from './guards/authenticated.guard';
 
 @Module({
   imports: [
@@ -17,12 +18,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
         return {
-          secret: configService.get<string>('jwtConfig.secret')
+          secret: configService.get<string>('jwtConfig.secret') || 'nest'
         };
       },
     }),
   ],
-  providers: [UserService, AuthService, LocalStrategy],
+  providers: [UserService, AuthService, LocalStrategy, AuthenticatedGuard],
   controllers: [AuthController]
 })
 export class AuthModule {}

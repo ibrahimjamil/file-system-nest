@@ -8,7 +8,7 @@ export class UserController {
 
 
     public storeUser(@Body() createUserDto: CreateUserDto) {
-        return this.userService.createUser(createUserDto.name, createUserDto.password);
+        return this.userService.createUser(createUserDto.email, createUserDto.password);
     }
 
     public getUser(name: string){

@@ -8,16 +8,16 @@ export class UserRepository extends Repository<User> {
     super(User, dataSource.manager);
   }
 
-  async findOneUser(name: string) {
-    return this.findOneBy({name});
+  async findOneUser(email: string) {
+    return this.findOneBy({email});
   }
-  async postUser(name: string, password: string) {
+  async postUser(email: string, password: string) {
     await this
     .createQueryBuilder()
     .insert()
     .into(User)
     .values({
-        name,
+        email,
         password
     })
     .execute()

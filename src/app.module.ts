@@ -21,11 +21,11 @@ EnvHelper.verifyNodeEnv();
       validate: validateAdmin,
     }),
     DatabaseModule,
+    AuthModule,
     FileModule,
     UserModule,
-    AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService, AuthService],
+  providers: [AppService],
 })
 export class AppModule {}
