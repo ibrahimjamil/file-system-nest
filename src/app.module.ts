@@ -7,6 +7,9 @@ import { AppService } from './app.service';
 import appConfig from '../libs/common/src/configs/app.config';
 import jwtConfig from '../libs/common/src/configs/jwt.config';
 import { FileModule } from './file/file.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/auth.service';
 
 EnvHelper.verifyNodeEnv();
 @Module({
@@ -18,9 +21,11 @@ EnvHelper.verifyNodeEnv();
       validate: validateAdmin,
     }),
     DatabaseModule,
-    FileModule
+    FileModule,
+    UserModule,
+    AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthService],
 })
 export class AppModule {}

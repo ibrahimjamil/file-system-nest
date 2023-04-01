@@ -9,11 +9,11 @@ export default registerAs('databaseConfig', () => ({
   password: process.env.TYPEORM_PASSWORD,
   database: process.env.TYPEORM_DATABASE,
   entities: [
-    path.join(__dirname, '../../../../apps/**/*.entity{.ts,.js}'),
+    path.join(__dirname, '../../../../src/**/*.entity{.ts,.js}'),
     path.join(__dirname, '../../../../libs/**/*.entity{.ts,.js}'),
   ],
   subscribers: [
-    path.join(__dirname, '../../../../apps/**/*.subscriber{.ts,.js}'),
+    path.join(__dirname, '../../../../src/**/*.subscriber{.ts,.js}'),
     path.join(__dirname, '../../../../libs/**/*.subscriber{.ts,.js}'),
   ],
   synchronize: false,

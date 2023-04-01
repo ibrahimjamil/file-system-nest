@@ -13,6 +13,6 @@ export class FileController {
 
   @Post('/')
   postFile(@Body() createFileDto: CreateFileDto) {
-    return this.fileService.postFile();
+    return this.fileService.postFile(createFileDto.name, createFileDto.email)
   }
 }

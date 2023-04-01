@@ -1,25 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
-import { File } from './file.entity';
+import { User } from './user.entity';
 
 @Injectable()
-export class FileRepository extends Repository<File> {
+export class UserRepository extends Repository<User> {
   constructor(public readonly dataSource: DataSource) {
-    super(File, dataSource.manager);
+    super(User, dataSource.manager);
   }
 
-  async findById(id: number) {
-    return this.findOne({ where: { id } });
+  async findOneUser(name: string) {
+    return this.findOneBy({name});
   }
-
-  async postFile(name: string, email: string) {
+  async postUser(name: string, password: string) {
     await this
     .createQueryBuilder()
     .insert()
-    .into(File)
+    .into(User)
     .values({
         name,
-        email
+        password
     })
     .execute()
   }

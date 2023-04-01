@@ -1,9 +1,9 @@
 import { IsNotEmpty } from "class-validator";
 
-export class CreateFileDto {
+export class CreateUserDto {
     @IsNotEmpty()
     readonly name: string;
 
     @IsNotEmpty()
-    readonly email: string;
+    readonly password: string;
 }

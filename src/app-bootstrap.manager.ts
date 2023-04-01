@@ -5,6 +5,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from 'libs/common/src/filters/all-exceptions.filter';
+import { Reflector } from '@nestjs/core';
 
 export class AppBootstrapManager {
   static async getTestingModule(): Promise<TestingModule> {
@@ -14,6 +15,7 @@ export class AppBootstrapManager {
   }
 
   static setAppDefaults(app: INestApplication): INestApplication {
+    const reflector = app.get(Reflector);
     app
       .use(json({ limit: '50mb' }))
       .use(cookieParser())

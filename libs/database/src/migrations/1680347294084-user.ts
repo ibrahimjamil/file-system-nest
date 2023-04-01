@@ -1,11 +1,11 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm"
+import { MigrationInterface, QueryRunner, Table} from "typeorm"
 
-export class file1680281114823 implements MigrationInterface {
+export class user1680347294084 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-              name: 'file',
+              name: 'user',
               columns: [
                 {
                   name: 'id',
@@ -22,7 +22,7 @@ export class file1680281114823 implements MigrationInterface {
                   isNullable: false,
                 },
                 {
-                  name: 'email',
+                  name: 'password',
                   type: 'varchar',
                   length: '36',
                   isNullable: false,
@@ -32,7 +32,7 @@ export class file1680281114823 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('file');
+        await queryRunner.dropTable('user');
     }
 
 }

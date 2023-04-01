@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('file')
-export class File {
+@Entity('user')
+export class User {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
@@ -10,7 +10,7 @@ export class File {
   @Column({ type: 'varchar', nullable: true, length: 128 })
   name: string;
 
-  @ApiProperty({ description: 'E-mail', maximum: 255, required: true })
+  @ApiProperty({ description: 'Password', maximum: 255, required: true })
   @Column({ type: 'varchar', nullable: false, length: 255 })
-  email: string;
+  password: string;
 }
